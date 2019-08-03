@@ -11,7 +11,7 @@ describe 'Schedule API' do
       schedule = JSON.parse(response.body)
       expect(schedule['data']['id']).to eq(id)
       expect(schedule['data']['type']).to eq("schedule")
-      expect(schedule['data']['attributes']).to eq({"appointments": []})
+      expect(schedule['data']['attributes']).to eq({"appointments" => []})
     end
   end
 end
