@@ -36,7 +36,15 @@ rails s
 
 ## Using the API
 
+### GET A Schedule
 
+#### In order to read a schedule, make a GET request to the following URI with that schedule's id:
+
+```
+GET /api/v1/schedules/:id
+```
+
+#### This will return a Fast JSON object that has the schedule and all its appointments sorted by start time (soonest first)
 
 ## Running Tests
 
