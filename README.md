@@ -56,6 +56,16 @@ POST /api/v1/schedules
 
 #### This will return a newly created Schedule object with its unique id
 
+### DELETE A Schedule
+
+#### In order to read a schedule, make a DELETE request to the following URI with the id of the schedule you want to delete:
+
+```
+DELETE /api/v1/schedules/:id
+```
+
+#### This will delete the schedule and send a 204 status
+
 ## Running Tests
 
 #### The Application uses [RSPEC](https://rspec.info/) as a testing suite. To run the test suite, after completing the steps from "Initial Set Up" above, simply run:

@@ -8,7 +8,17 @@ class Api::V1::SchedulesController < ApplicationController
     render_schedule(Schedule.create, 201)
   end
 
+  def destroy
+    schedule = Schedule.find_by(id: params[:id])
+    schedule ? delete_schedule(schedule) : four_oh_four
+  end
+
   private
+
+  def delete_schedule(schedule)
+    schedule.destroy
+    render json: {}, status: 204
+  end
 
   def render_schedule(schedule, code = 200)
     render json: ScheduleSerializer.new(schedule), status: code
