@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe Schedule do
+  describe 'relationships' do
+    it { should have_many :appointments}
+  end
+
   describe 'instance_methods' do
     it 'appointments_in_order' do
       schedule_1 = create(:schedule)
