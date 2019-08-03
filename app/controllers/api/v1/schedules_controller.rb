@@ -1,5 +1,10 @@
 class Api::V1::SchedulesController < ApplicationController
   def show
-    render json: ScheduleSerializer.new(Schedule.find(params[:id]))
+    schedule = Schedule.find_by(id: params[:id])
+    if schedule
+      render json: ScheduleSerializer.new(Schedule.find(params[:id]))
+    else
+      four_oh_four
+    end
   end
 end

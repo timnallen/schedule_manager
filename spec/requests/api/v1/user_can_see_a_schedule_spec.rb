@@ -15,5 +15,11 @@ describe 'Schedule API' do
       expect(schedule['data']['attributes']['appointments'].count).to eq(1)
       expect(schedule['data']['attributes']['appointments'][0]['id']).to eq(app.id)
     end
+
+    it 'shows me a 404 without a valid id' do
+      get "/api/v1/schedules/1"
+
+      expect(response.status).to eq(404)
+    end
   end
 end
