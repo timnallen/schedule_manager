@@ -9,7 +9,17 @@ class Api::V1::AppointmentsController < ApplicationController
     sch ? test_validity(sch) : four_oh_four
   end
 
+  def destroy
+    appt = Appointment.find_by(id: params[:id], schedule_id: params[:schedule_id])
+    appt ? delete_appt(appt) : four_oh_four
+  end
+
   private
+
+  def delete_appt(appt)
+    appt.destroy
+    render status: 204
+  end
 
   def render_appt(appt, code = 200)
     render json: AppointmentSerializer.new(appt), status: code

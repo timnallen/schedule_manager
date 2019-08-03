@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :schedules, only: [:show, :create, :destroy] do
-        resources :appointments, only: [:create]
+        resources :appointments, only: [:create, :destroy]
       end
       resources :appointments, only: [:show]
     end

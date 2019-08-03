@@ -80,13 +80,41 @@ GET /api/v1/appointments/:id
 
 #### In order to create an appointment, make a POST request to the following URI with the schedule id:
 
-##### Note: An appointment cannot overlap with an existing appointment on that schedule
-
 ```
 POST /api/v1/schedule/:id/appointments
 ```
 
+##### Note: An appointment MUST contain a request body that has a start time and end time that do not overlap with an existing appointment on that schedule or overlap with each other
+
+#### Request Body:
+
+```
+{
+  "start_time": <INT>,
+  "end_time": <INT>
+}
+```
+
+#### Example Request:
+
+```
+{
+  "start_time": 2,
+  "end_time": 4
+}
+```
+
 #### This will return a Fast JSON object that has the appointment and all its attributes including the schedule id
+
+### DELETE An Appointment
+
+#### In order to delete an appointment, make a POST request to the following URI with the schedule id and the appt id:
+
+```
+POST /api/v1/schedule/:schedule_id/appointments/:id
+```
+
+#### This will delete the appt and return a 204 status
 
 ## Running Tests
 
