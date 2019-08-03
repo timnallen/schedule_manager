@@ -35,5 +35,27 @@ describe 'Appointment API' do
 
       expect(response.status).to eq(404)
     end
+
+    describe 'if I enter an invalid appointment' do
+      it 'gives me a message saying I cannot overlap times' do
+        create(:appointment, schedule: @schedule_1, start_time: 2, end_time: 3)
+
+        post "/api/v1/schedules/#{@schedule_1.id}/appointments", params: @body
+
+        expect(response.status).to eq(400)
+        body = JSON.parse(response.body)
+        expect(body['message']).to eq("You cannot schedule an appointment during a previously scheduled appointment")
+      end
+
+      it 'gives me a message saying end_time must be after start time' do
+        create(:appointment, schedule: @schedule_1, start_time: 3, end_time: 3)
+
+        post "/api/v1/schedules/#{@schedule_1.id}/appointments", params: @body
+
+        expect(response.status).to eq(400)
+        body = JSON.parse(response.body)
+        expect(body['message']).to eq("End time must be after start time")
+      end
+    end
   end
 end

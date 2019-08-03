@@ -6,7 +6,7 @@ class Api::V1::AppointmentsController < ApplicationController
 
   def create
     sch = Schedule.find_by(id: params[:schedule_id])
-    sch ? schedule_appt(sch) : four_oh_four
+    sch ? test_validity(sch) : four_oh_four
   end
 
   private
@@ -15,8 +15,16 @@ class Api::V1::AppointmentsController < ApplicationController
     render json: AppointmentSerializer.new(appt), status: code
   end
 
-  def schedule_appt(sch)
+  def test_validity(sch)
     appt = sch.appointments.new(appt_params)
+    appt.validity_test[:valid] ? schedule_appt(appt) : render_invalid_message(appt.validity_test[:message])
+  end
+
+  def render_invalid_message(message)
+    render json: {message: message}, status: 400
+  end
+
+  def schedule_appt(appt)
     appt.save ? render_appt(appt, 201) : four_oh_four
   end
 
