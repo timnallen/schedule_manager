@@ -1,24 +1,69 @@
-# README
+# ScheduleManagerAPI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Initial Setup
 
-Things you may want to cover:
+#### 1. Clone down the repo:
+```
+git clone git@github.com:timnallen/schedule_manager.git
+```
+#### 2. Install the dependencies in the Gemfile:
 
-* Ruby version
+```
+bundle install
+```
 
-* System dependencies
+#### Set up the database:
 
-* Configuration
+#### 1. Create and migrate:
 
-* Database creation
+```
+rake db:{create,migrate}
+```
 
-* Database initialization
+#### 2. Seed the db:
 
-* How to run the test suite
+```
+rake db:seed
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+#### 3. Run the code in development mode:
 
-* Deployment instructions
+```
+rails s
+```
 
-* ...
+#### 4. Open your browser and visit http://localhost:3000
+
+## Using the API
+
+
+
+## Running Tests
+
+#### The Application uses [RSPEC](https://rspec.info/) as a testing suite. To run the test suite, after completing the steps from "Initial Set Up" above, simply run:
+
+```
+rspec
+```
+
+#### To check out test coverage after running the tests, you can run:
+
+```
+open coverage/index.html
+```
+
+#### This will open a file in your browser that will show details about test coverage.
+
+## Contributors
+- [Tim Allen](https://github.com/timnallen)
+
+## Schema Design
+
+![alt text](https://raw.githubusercontent.com/timnallen/schedule_manager/dbschema.png)
+
+## Tech Stack List
+- Ruby
+- Rails
+- Postgresql
+---
+**[Back to Top](https://github.com/timnallen/schedule_manager/blob/master/README.md)**
