@@ -30,13 +30,15 @@ describe 'Appointment API' do
       expect(response.status).to eq(404)
     end
 
-    it 'shows me a 404 without a body' do
-      post "/api/v1/schedules/#{@schedule_1.id}/appointments"
-
-      expect(response.status).to eq(404)
-    end
-
     describe 'if I enter an invalid appointment' do
+      it 'gives me a message with no body' do
+        post "/api/v1/schedules/#{@schedule_1.id}/appointments"
+
+        expect(response.status).to eq(400)
+        body = JSON.parse(response.body)
+        expect(body['message']).to eq("Start and end time must be given")
+      end
+
       it 'gives me a message saying I cannot overlap times' do
         create(:appointment, schedule: @schedule_1, start_time: 2, end_time: 3)
 
@@ -48,9 +50,12 @@ describe 'Appointment API' do
       end
 
       it 'gives me a message saying end_time must be after start time' do
-        create(:appointment, schedule: @schedule_1, start_time: 3, end_time: 3)
+        body = {
+          start_time: 2,
+          end_time: 2
+        }
 
-        post "/api/v1/schedules/#{@schedule_1.id}/appointments", params: @body
+        post "/api/v1/schedules/#{@schedule_1.id}/appointments", params: body
 
         expect(response.status).to eq(400)
         body = JSON.parse(response.body)
