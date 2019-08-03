@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_190303) do
+ActiveRecord::Schema.define(version: 2019_08_03_192138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "schedule_id"
+    t.integer "start_time"
+    t.integer "end_time"
+    t.index ["schedule_id"], name: "index_appointments_on_schedule_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
   end
 
+  add_foreign_key "appointments", "schedules"
 end
