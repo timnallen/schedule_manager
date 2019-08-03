@@ -9,8 +9,10 @@ describe 'Schedule API' do
 
       expect(response).to be_successful
       expect(response.status).to eq(204)
-      body = JSON.parse(response.body)
-      expect(body['message']).to eq("You have successfully deleted schedule #{schedule.id}")
+
+      get "/api/v1/schedules/#{schedule.id}"
+
+      expect(response.status).to eq(404)
     end
 
     it 'shows me a 404 without a valid id' do

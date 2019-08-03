@@ -64,7 +64,7 @@ POST /api/v1/schedules
 DELETE /api/v1/schedules/:id
 ```
 
-#### This will delete the schedule and send a 204 status with a message confirming the deletion
+#### This will delete the schedule and send a 204 status
 
 ## Running Tests
 
