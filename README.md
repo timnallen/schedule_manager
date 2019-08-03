@@ -66,6 +66,16 @@ DELETE /api/v1/schedules/:id
 
 #### This will delete the schedule and send a 204 status
 
+### GET An Appointment
+
+#### In order to read an appointment, make a GET request to the following URI with the appointment id:
+
+```
+GET /api/v1/appointments/:id
+```
+
+#### This will return a Fast JSON object that has the appointment and all its attributes including the schedule id
+
 ## Running Tests
 
 #### The Application uses [RSPEC](https://rspec.info/) as a testing suite. To run the test suite, after completing the steps from "Initial Set Up" above, simply run:
