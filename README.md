@@ -76,6 +76,18 @@ GET /api/v1/appointments/:id
 
 #### This will return a Fast JSON object that has the appointment and all its attributes including the schedule id
 
+### CREATE An Appointment
+
+#### In order to create an appointment, make a POST request to the following URI with the schedule id:
+
+##### Note: An appointment cannot overlap with an existing appointment on that schedule
+
+```
+POST /api/v1/schedule/:id/appointments
+```
+
+#### This will return a Fast JSON object that has the appointment and all its attributes including the schedule id
+
 ## Running Tests
 
 #### The Application uses [RSPEC](https://rspec.info/) as a testing suite. To run the test suite, after completing the steps from "Initial Set Up" above, simply run:
