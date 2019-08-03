@@ -68,10 +68,10 @@ DELETE /api/v1/schedules/:id
 
 ### GET An Appointment
 
-#### In order to read an appointment, make a GET request to the following URI with the schedule id and the appointment id:
+#### In order to read an appointment, make a GET request to the following URI with the appointment id:
 
 ```
-GET /api/v1/schedules/:id/appointments/:id
+GET /api/v1/appointments/:id
 ```
 
 #### This will return a Fast JSON object that has the appointment and all its attributes including the schedule id
