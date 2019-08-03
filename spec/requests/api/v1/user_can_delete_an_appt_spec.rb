@@ -13,7 +13,7 @@ describe 'Appointment API' do
       expect(response).to be_successful
       expect(response.status).to eq(204)
 
-      get "/api/v1/schedules/#{@schedule.id}/appointments/#{@appt.id}"
+      get "/api/v1/appointments/#{@appt.id}"
 
       expect(response.status).to eq(404)
     end

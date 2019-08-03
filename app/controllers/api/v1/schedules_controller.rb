@@ -17,7 +17,7 @@ class Api::V1::SchedulesController < ApplicationController
 
   def delete_schedule(schedule)
     schedule.destroy
-    render json: {}, status: 204
+    render status: 204
   end
 
   def render_schedule(schedule, code = 200)
