@@ -2,6 +2,6 @@ class ScheduleSerializer
   include FastJsonapi::ObjectSerializer
 
   attribute :appointments do |object|
-    object.appointments
+    object.appointments_in_order
   end
 end
