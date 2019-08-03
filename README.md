@@ -59,7 +59,7 @@ open coverage/index.html
 
 ## Schema Design
 
-![alt text](https://raw.githubusercontent.com/timnallen/schedule_manager/dbschema.png)
+![alt text](/DBschema.png)
 
 ## Tech Stack List
 - Ruby
