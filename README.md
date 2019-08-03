@@ -46,6 +46,16 @@ GET /api/v1/schedules/:id
 
 #### This will return a Fast JSON object that has the schedule and all its appointments sorted by start time (soonest first)
 
+### CREATE A Schedule
+
+#### In order to read a schedule, make a POST request to the following URI:
+
+```
+POST /api/v1/schedules
+```
+
+#### This will return a newly created Schedule object with its unique id
+
 ## Running Tests
 
 #### The Application uses [RSPEC](https://rspec.info/) as a testing suite. To run the test suite, after completing the steps from "Initial Set Up" above, simply run:
