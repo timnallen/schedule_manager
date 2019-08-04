@@ -17,6 +17,9 @@ class Api::V1::SchedulesController < ApplicationController
   private
 
   def delete_schedule(schedule)
+    schedule.appointments.each do |appointment|
+      appointment.destroy
+    end
     schedule.destroy
     render status: 204
   end
