@@ -16,5 +16,14 @@ describe 'Schedule API' do
       expect(schedule['data']['attributes']['appointments']).to be_a(Array)
       expect(schedule['data']['attributes']['appointments'].count).to eq(0)
     end
+
+    it 'tells me I need a name without a body with a name' do
+      post "/api/v1/schedules"
+
+      expect(response).to be_successful
+      expect(response.status).to eq(400)
+      message = JSON.parse(response.body)
+      expect(message['message']).to eq("You need a name in a request body")
+    end
   end
 end
