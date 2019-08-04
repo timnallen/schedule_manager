@@ -5,7 +5,8 @@ class Api::V1::SchedulesController < ApplicationController
   end
 
   def create
-    render_schedule(Schedule.create, 201)
+    schedule = Schedule.new(schedule_params)
+    schedule.save ? render_schedule(schedule, 201) : render(json: {message: "You need a name in a request body"}, status: 400)
   end
 
   def destroy
@@ -16,11 +17,18 @@ class Api::V1::SchedulesController < ApplicationController
   private
 
   def delete_schedule(schedule)
+    schedule.appointments.each do |appointment|
+      appointment.destroy
+    end
     schedule.destroy
     render status: 204
   end
 
   def render_schedule(schedule, code = 200)
     render json: ScheduleSerializer.new(schedule), status: code
+  end
+
+  def schedule_params
+    params.permit(:name)
   end
 end
