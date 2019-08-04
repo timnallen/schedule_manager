@@ -28,7 +28,7 @@ class Appointment < ApplicationRecord
 
   def find_conflicts(ranges)
     ranges.find_all do |range|
-      range.include?(start_time) || range.include?(end_time)
+      range.overlaps?(start_time..end_time)
     end
   end
 
