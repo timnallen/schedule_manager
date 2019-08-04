@@ -20,7 +20,6 @@ describe 'Schedule API' do
     it 'tells me I need a name without a body with a name' do
       post "/api/v1/schedules"
 
-      expect(response).to be_successful
       expect(response.status).to eq(400)
       message = JSON.parse(response.body)
       expect(message['message']).to eq("You need a name in a request body")
